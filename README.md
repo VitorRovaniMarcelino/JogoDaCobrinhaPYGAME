@@ -1,3 +1,0 @@
-# JogoDaCobrinhaPYGAME
-
-Jogo da cobrrinh
