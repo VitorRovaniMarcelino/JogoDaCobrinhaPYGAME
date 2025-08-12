@@ -1,17 +1,14 @@
-# imports:
 import pygame
 from pygame.locals import *
 from sys import exit
 from random import randint
 
-# inicializador:
 pygame.init()
 pygame.mixer.init()
 
 icone = pygame.image.load('imagens/icone.png')
 pygame.display.set_icon(icone)
 
-# música de fundo:
 lista_musicas = [
 'audios/Cartoon, Jéja - On & On.mp3',
 'audios/Desmeon - Hellcat .mp3',
@@ -29,27 +26,21 @@ pygame.mixer.music.set_volume(0.1)
 pygame.mixer.music.load(lista_musicas[musica_atual])
 pygame.mixer.music.play(-1) 
 
-# som que faz quando encosta um objeto no outro
 som_tocar = pygame.mixer.Sound("audios/somtocar.mp3")
 som_tocar.set_volume(0.5)
 
-# som ao morrer
 som_morrer = pygame.mixer.Sound("audios/sommorrer.mp3")
 som_morrer.set_volume(0.5)
 
-# tamanho da tela:
 largura = 640
 altura = 480
 
-# tamanho de um objeto:
 largura_cobra = 25
 altura_cobra = 25
 
-# posicao do objeto na tela:
 x_cobra = int(largura / 2)
 y_cobra = int(altura / 2)
 
-# velocidade da cobra
 velocidade_cobra = 20
 x_controle = velocidade_cobra
 y_controle = 0
@@ -63,24 +54,19 @@ def gerar_comida_fora_da_cobra(lista_cobra):
         if [x, y] not in lista_cobra:
             return x, y
 
-# posicao de outro objeto na tela:
+
 x_comida, y_comida = gerar_comida_fora_da_cobra(listaCobra)
 
-# fazer um texto na tela
 fonte_texto = pygame.font.SysFont('comicsans', 30, True, False)
 fonte_musica = pygame.font.SysFont('comicsans', 20, True, False)
 quantidade_pontos = 0
 
-# atribuindo o tamanho da tela
 tela = pygame.display.set_mode((largura, altura))
 
-# escrevendo o nome da tela
 pygame.display.set_caption("Jogo da Cobrinha")
 
-# atribuindo a quantidade de frames do jogo
 frames = pygame.time.Clock()
 
-# Carregar as imagens para cada direção
 imagem_cima = pygame.image.load("imagens/cobra_cima.png").convert_alpha()
 imagem_baixo = pygame.image.load("imagens/cobra_baixo.png").convert_alpha()
 imagem_esquerda = pygame.image.load("imagens/cobra_esquerda.png").convert_alpha()
@@ -94,7 +80,6 @@ imagem_comida = pygame.transform.scale(imagem_comida, (30, 30))
 corpo = corpo_vertical
 imagem_atual = imagem_direita
 
-# imagem do fundo
 imagem_fundo = pygame.image.load("imagens/imagemFundo.png").convert()
 imagem_fundo = pygame.transform.scale(imagem_fundo, (largura, altura))
 
